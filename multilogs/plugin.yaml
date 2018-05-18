@@ -1,7 +1,0 @@
-name: "multilogs"
-shortDesc: "Stream logs from multiple pods at once"
-longDesc: >
-  Streams logs from multiple pods at once, by selector.
-  Example:
-    $ kubectl plugin multilogs app=web,tier=frontend
-command: ./multilogs.bash

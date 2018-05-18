@@ -12,7 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: "ns"
-shortDesc: "kubens(1) as a plugin"
-longDesc: "Uses kubens(1) to switch namespaces."
-command: ./ns.bash
+name: "mtail"
+shortDesc: "Tail logs from multiple pods at once"
+longDesc: >
+  Streams logs from multiple pods at once, by selector.
+  Uses "kubectl logs --tail=10 --follow"
+  Example:
+    $ kubectl plugin mtail app=web,tier=frontend
+command: ./mtail.bash
