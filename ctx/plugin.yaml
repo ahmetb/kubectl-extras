@@ -1,0 +1,5 @@
+name: "ctx"
+shortDesc: "kubectx(1) as a plugin"
+longDesc: >
+  Uses kubectx(1) to switch contexts.
+command: ./ctx.bash

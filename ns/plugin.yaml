@@ -1,0 +1,4 @@
+name: "ns"
+shortDesc: "kubens(1) as a plugin"
+longDesc: "Uses kubens(1) to switch namespaces."
+command: ./ns.bash

@@ -1,0 +1,4 @@
+name: delete-orphaned-pods
+shortDesc: "delete Pods that don't have a parent controller"
+longDesc: "Deletes Pods that don't have an ownerReference in all namespaces"
+command: ./delete-orphaned-pods.bash
