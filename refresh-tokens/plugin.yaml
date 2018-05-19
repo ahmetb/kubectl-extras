@@ -13,7 +13,7 @@
 # limitations under the License.
 
 name: "refresh-tokens"
-shortDesc: "Make a call on all contexts to refresh access tokens."
+shortDesc: "Make a call on all contexts to refresh access tokens"
 longDesc: >
   This is especially useful for GKE (and similar systems) where the
   access tokens expire every hour or so, which introduces extra few seconds
