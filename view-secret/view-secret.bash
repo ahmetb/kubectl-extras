@@ -2,6 +2,7 @@
 # Requires:
 # - jq
 # - kubectl
+# - base64
 set -eo pipefail
 
 test -z "${1}" && echo >&2 "error: secret name required" && exit 1
