@@ -28,6 +28,13 @@ if [[ -z "${cur_ctx}" ]]; then
     exit 1
 fi
 
-kubectl config view --minify --flatten \
-    -o=go-template='{{(index (index .clusters 0).cluster "certificate-authority-data")}}' |\
-    base64 --decode
+ca_encoded="$(kubectl config view --minify --flatten \
+    -o=go-template='{{(index (index .clusters 0).cluster "certificate-authority-data")}}')"
+
+if [[ "${ca_encoded}" == "<no value>" ]]; then
+    # it means you hit this stupid bug https://github.com/kubernetes/kubectl/issues/502
+    echo >&2 "error: context \"${cur_ctx}\" has no certificate-authority-data!"
+    exit 2
+fi
+
+base64 --decode <<< "${ca_encoded}"
