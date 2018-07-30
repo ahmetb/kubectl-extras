@@ -47,4 +47,4 @@ fi
 escaped_key="${key/./\\.}"
 
 kubectl get secret "${secret}" \
-    -o=jsonpath=\{.data."${escaped_key}"\} | base64 ---decode
+    -o=jsonpath=\{.data."${escaped_key}"\} | base64 --decode
