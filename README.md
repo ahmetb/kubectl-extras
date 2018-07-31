@@ -6,7 +6,8 @@ on a daily basis.
 |        plugin       | description |
 |---------------------|-------------|
 | ca-cert             | print PEM CA certificate of current cluster |
-| extract-context     | extract current-context on kubectl as a kubeconfig yaml|
+| extract-context     | extract current-context on kubectl as a kubeconfig yaml |
+| gke-ssh             | SSH into the GKE node the pod is running on |
 | gke-ui              | launch GKE web interface |
 | mtail               | tail logs from multiple pods matching label selector |
 | refresh-tokens      | make a call to all clusters in kubeconfig to refresh access tokens |
