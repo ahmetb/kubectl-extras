@@ -19,4 +19,4 @@ longDesc: >
   Uses "kubectl logs --tail=10 --follow"
   Example:
     $ kubectl plugin mtail app=web,tier=frontend
-command: ./mtail.bash
+command: ./mtail.sh

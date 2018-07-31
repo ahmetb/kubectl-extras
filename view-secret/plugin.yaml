@@ -21,4 +21,4 @@ longDesc: >
   Example:
     kubectl plugin view-secret foo
     kubectl plugin view-secret foo key.json
-command: ./view-secret.bash
+command: ./view-secret.sh

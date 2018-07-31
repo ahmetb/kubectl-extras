@@ -18,4 +18,4 @@ longDesc: >
   This is especially useful for GKE (and similar systems) where the
   access tokens expire every hour or so, which introduces extra few seconds
   of latency on demos.
-command: ./refresh-tokens.bash
+command: ./refresh-tokens.sh

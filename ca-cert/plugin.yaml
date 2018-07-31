@@ -16,4 +16,4 @@ name: "ca-cert"
 shortDesc: "Output the CA certificate of the current context in PEM format"
 longDesc: >
   Outputs the CA certificate of the current context in PEM format.
-command: ./ca-cert.bash
+command: ./ca-cert.sh

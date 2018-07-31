@@ -15,4 +15,4 @@
 name: rm-standalone-pods
 shortDesc: "Delete Pods that don't have a parent controller"
 longDesc: "Deletes Pods that don't have an ownerReference in all namespaces"
-command: ./rm-standalone-pods.bash
+command: ./rm-standalone-pods.sh

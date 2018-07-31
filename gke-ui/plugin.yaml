@@ -16,4 +16,4 @@ name: "gke-ui"
 shortDesc: "Launch Google Kubernetes Engine web console"
 longDesc: >
   Launch Google Kubernetes Engine web console
-command: ./gke-ui.bash
+command: ./gke-ui.sh

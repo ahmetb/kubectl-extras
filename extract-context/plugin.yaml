@@ -16,4 +16,4 @@ name: "extract-context"
 shortDesc: "Output minified kubeconfig file for context"
 longDesc: >
   Outputs minified kubeconfig file for specified kubeconfig context.
-command: ./extract-context.bash
+command: ./extract-context.sh
