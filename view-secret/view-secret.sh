@@ -26,7 +26,6 @@ key="${2}"
 
 if [[ -z "${key}" ]]; then
     mapfile -t keys < <(kubectl get secret "${secret}" \
-        -n="${KUBECTL_PLUGINS_CURRENT_NAMESPACE}" \
         -o=json | jq -r '.data | keys[]')
 
     if [[ "${#keys[@]}" -gt 1 ]]; then
