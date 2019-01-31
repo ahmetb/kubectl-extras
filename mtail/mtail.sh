@@ -23,8 +23,9 @@ set -eo pipefail
 test -z "${1}" && echo "label selector required." 1>&2 && exit 1
 
 selector="$1"
-mapfile -t arr < <(kubectl get pods -l="${selector}" \
-    -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
+while IFS= read -r line; do
+    arr+=("$line")
+done < <(kubectl get pods -l="${selector}" -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
 
 for po in "${arr[@]}"; do
     (
