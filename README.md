@@ -14,12 +14,7 @@ on a daily basis.
 | rm-standalone-pods  | remove all pods without owner references |
 | view-secret         | decode secrets |
 
-To install these on your machine, run:
+You can install these plugins on your machine with `krew` plugin manager:
+https://github.com/GoogleContainerTools/krew
 
-    mkdir -p ~/.kube/plugins
-    git clone https://github.com/ahmetb/kubectl-extras ~/.kube/plugins/kubectl-extras
-
-Then find them through:
-
-    kubectl plugin -h
-
+    kubectl krew install <plugin-name>
