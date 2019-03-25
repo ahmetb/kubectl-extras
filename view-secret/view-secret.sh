@@ -43,7 +43,7 @@ if [[ -z "${key}" ]]; then
     fi
 fi
 
-escaped_key="${key/./\\.}"
+escaped_key="${key//./\\.}"
 
 kubectl get secret "${secret}" \
     -o=jsonpath=\{.data."${escaped_key}"\} | base64 --decode
