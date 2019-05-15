@@ -9,7 +9,6 @@ on a daily basis.
 | extract-context     | extract current-context on kubectl as a kubeconfig yaml |
 | gke-ssh             | SSH into the GKE node the pod is running on |
 | gke-ui              | launch GKE web interface |
-| mtail               | tail logs from multiple pods matching label selector |
 | refresh-tokens      | make a call to all clusters in kubeconfig to refresh access tokens |
 | rm-standalone-pods  | remove all pods without owner references |
 | view-secret         | decode secrets |
