@@ -23,6 +23,7 @@ set -eo pipefail
 test -z "${1}" && echo >&2 "error: secret name required" && exit 1
 secret="${1}"
 key="${2}"
+ns="${3}"
 
 if [[ -z "${key}" ]]; then
     mapfile -t keys < <(kubectl get secret "${secret}" \
@@ -46,4 +47,4 @@ fi
 escaped_key="${key//./\\.}"
 
 kubectl get secret "${secret}" \
-    -o=jsonpath=\{.data."${escaped_key}"\} | base64 --decode
+    -o=jsonpath=\{.data."${escaped_key}"\} --namespace "${ns}" | base64 --decode
