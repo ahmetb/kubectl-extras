@@ -20,17 +20,18 @@
 
 set -eo pipefail
 
-test -z "${1}" && echo "label selector required." 1>&2 && exit 1
+test -z "${1}" && echo "label selector required." && echo "Usage e.g. kubectl mtail app=my-service -n my-ns my-container" 1>&2 && exit 1
 
 selector="$1"
-while IFS= read -r line; do
-    arr+=("$line")
-done < <(kubectl get pods -l="${selector}" -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
+namespace="$2 $3"
+container="$4"
 
-for po in "${arr[@]}"; do
+pods=$(kubectl get pods -l="app=identity-service" -n argonauts -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
+
+for po in $pods; do
     (
         set -ex
-        kubectl logs --follow "${po}" --tail=10 \
+        kubectl $namespace logs --follow "${po}" --tail=10 $container \
     ) | sed "s/^/$(tput setaf 3)[${po}] $(tput sgr0)/" &
     # TODO(ahmetb) add more colors and pick one for each pod
 done
