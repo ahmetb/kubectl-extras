@@ -13,10 +13,10 @@
 # limitations under the License.
 
 name: "mtail"
-shortDesc: "Tail logs from multiple pods at once"
+shortDesc: "Tail logs from multiple pods at once and from pods with multiple containers"
 longDesc: >
   Streams logs from multiple pods at once, by selector.
   Uses "kubectl logs --tail=10 --follow"
   Example:
-    $ kubectl plugin mtail app=web,tier=frontend
+    $ kubectl plugin mtail app=web,tier=frontend -n my-namespace my-container
 command: ./mtail.sh
