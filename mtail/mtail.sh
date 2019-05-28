@@ -26,7 +26,7 @@ selector="$1"
 namespace="$2 $3"
 container="$4"
 
-pods=$(kubectl get pods -l="app=identity-service" -n argonauts -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
+pods=$(kubectl get pods -l="${1}" -n argonauts -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
 
 for po in $pods; do
     (
