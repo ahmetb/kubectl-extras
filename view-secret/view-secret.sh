@@ -27,7 +27,7 @@ ns="${3}"
 
 if [[ -z "${key}" ]]; then
     mapfile -t keys < <(kubectl get secret "${secret}" \
-        -o=json | jq -r '.data | keys[]')
+        -o=json --namespace "${ns}" | jq -r '.data | keys[]')
 
     if [[ "${#keys[@]}" -gt 1 ]]; then
         echo >&2 "Multiple sub keys found. Specify another argument, one of:"
