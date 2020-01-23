@@ -25,9 +25,27 @@ secret="${1}"
 key="${2}"
 ns="${3}"
 
+
+function _kube_list_secs() {
+    IFS=';' read -ra items <<< "$(kubectl get secret "${secret}" -o=json | jq -r '.data | keys[]' | sort -t: | tr '\n' ';')"
+    local count=1
+    lines=$(for i in "${items[@]}"; do
+        IFS=":" read -ra TOKS <<< "${i}"
+        printf "  %s) %s\t%s\n" $count "${TOKS[0]}"
+        ((count=count+1))
+    done | column -t)
+    count=$(echo "$lines" | wc -l)
+    echo "$lines" >&2
+    local sel=0
+    while [[ $sel -lt 1 || $sel -gt $count ]]; do
+        read -r -p "Select a key: " sel >&2
+    done
+    echo "${items[(sel-1)]}"
+}
+
+
 if [[ -z "${key}" ]]; then
-    mapfile -t keys < <(kubectl get secret "${secret}" \
-        -o=json | jq -r '.data | keys[]')
+    IFS=":" read -ra keys <<< "$(_kube_list_secs)"
 
     if [[ "${#keys[@]}" -gt 1 ]]; then
         echo >&2 "Multiple sub keys found. Specify another argument, one of:"
